@@ -29,15 +29,50 @@ public class TwoDimentionalArrayExample {
         bufferedReader.close();
         
         int max = 0;
-        int sum = 0;
-        for(int i = 0; i < 3; i++) {
-        	
-        	
-        	for(int j=i; j < i+3;j++) {
-        		sum += arr.get(i).get(j); 
+        
+        List<List<Integer>> rows = new ArrayList<List<Integer>>();
+        for(int t = 0; t <= 3;t++)
+        {
+        	for(int row = t; row < 3 + t;row++)
+        		rows.add(arr.get(row));
+        	int col = 0;
+        	int sum = 0;
+        	while(col < 4) {
+        		for(int i = 0; i < rows.size();i++) {
+            		//System.out.println(rows.get(i));
+            		int k = 0;
+            		for(int j=col;j<col + 3;j++) {
+            		//	System.out.print(rows.get(i).get(j));
+            		//	System.out.print(" ");
+            			if(i == 1 && (k == 0 || k == 2))
+            				continue;
+            			else
+            				sum += rows.get(i).get(j);
+            		}
+            		//System.out.println();
+            	}
+        		col += 1;
+        		System.out.print(sum);
+        		System.out.print(" ");
+        		sum = 0;
+        		
         	}
-        	System.out.println(sum);
+        	System.out.println();
+        	rows.clear();
+        	System.out.println("------------------------------");
         }
+        
+//        for(int row = 0;row < 4;row++) {
+//        	for(int i = row; i < row + 3;i++) {
+//            	for(int j = 0; j < 3; j++) {
+//            		System.out.print(rows.get(i).get(j));
+//            		System.out.print(" ");
+//            	}
+//            	System.out.println();
+//            }
+//        	System.out.println("-------------------------");
+//        }
+        
         
     }
 
